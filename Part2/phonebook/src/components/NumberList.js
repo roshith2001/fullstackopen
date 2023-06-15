@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NumberList = ({isFiltering, filteredPerson, persons}) => {
+const NumberList = ({isFiltering, filteredPerson, persons, handleDelete}) => {
     return(
         <ul>
             {isFiltering ? (
@@ -14,9 +14,12 @@ const NumberList = ({isFiltering, filteredPerson, persons}) => {
             ) : (
                 persons.map((item) => {
                 return (
-                    <li key={item.name}>
-                    {item.name} &nbsp; {item.phone}
-                    </li>
+                    <div key={item.id}>
+                        <li>
+                        {item.name} &nbsp; {item.phone}
+                        </li>
+                        <button onClick={() => handleDelete(item.id, item.name, item.phone)}>delete</button>
+                    </div>
                 );
                 })
             )}

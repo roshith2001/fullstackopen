@@ -57,12 +57,12 @@ function App() {
   useEffect(() => {
     if(country !== null){
       axios
-    .get(`http://api.openweathermap.org/geo/1.0/direct?q=${country.capital[0]}&limit=1&appid=f45f70444240ed61b1ade3dcbba743a8`)
+    .get(`http://api.openweathermap.org/geo/1.0/direct?q=${country.capital[0]}&limit=1&appid=${process.env.REACT_APP_API_KEY}`)
     .then(response => {
       const weather = response.data
       console.log(weather)
       axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?lat=${weather[0].lat}&lon=${weather[0].lon}&appid=f45f70444240ed61b1ade3dcbba743a8&units=metric`)
+      .get(`https://api.openweathermap.org/data/2.5/weather?lat=${weather[0].lat}&lon=${weather[0].lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`)
       .then(response => {
         setCapitalWeather(response.data)
         console.log(response.data)
